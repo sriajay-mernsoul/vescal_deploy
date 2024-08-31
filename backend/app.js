@@ -19,10 +19,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var debug = require('debug')('vescal:server');
+var http = require('http');
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
 var server = http.createServer(app);
